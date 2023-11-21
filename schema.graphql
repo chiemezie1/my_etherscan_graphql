@@ -1,0 +1,59 @@
+# The Query type with different fields representing specific Ethereum-related queries
+type Query {
+  # Fetches ether balance for a given address
+  etherBalanceByAddress: ETH_RESULT!
+
+  # Retrieves the total supply of Ether
+  totalSupplyOfEther: ETH_RESULT!
+
+  # Gets the latest Ethereum price
+  latestEthereumPrice: ETH_PRICE!
+
+  # Retrieves the block confirmation time for Ethereum transactions
+  blockConfirmationTime: ETH_RESULT!
+}
+
+"""
+ETH_RESULT type represents the structure of the result returned by various Ethereum queries.
+"""
+type ETH_RESULT {
+  # Indicates the status of the query operation (e.g., Success, Error)
+  status: String!
+
+  # Provides additional messages or notifications related to the query operation
+  message: String!
+
+  # Holds the specific result data returned by the query
+  result: String!
+}
+
+"""
+ETH_PRICE type encapsulates the structure of the Ethereum price-related query response.
+"""
+type ETH_PRICE {
+  # Indicates the status of the query operation related to Ethereum price
+  status: String!
+
+  # Contains additional messages or notifications for Ethereum price query
+  message: String!
+
+  # Holds the Ethereum price-related result data structure
+  result: ETH_PRICE_RESULT!
+}
+
+"""
+ETH_PRICE_RESULT represents the structure of the data returned for Ethereum price details.
+"""
+type ETH_PRICE_RESULT {
+  # Ethereum to Bitcoin price
+  ethbtc: String!
+
+  # Timestamp associated with the Ethereum to Bitcoin price
+  ethbtc_timestamp: String!
+
+  # Ethereum to USD price
+  ethusd: String!
+
+  # Timestamp associated with the Ethereum to USD price
+  ethusd_timestamp: String!
+}
